@@ -66,9 +66,13 @@ export const WhoIsItFor: React.FC = () => {
 
       <div className="text-center">
         <div className="px-6 py-4 bg-blue-600 rounded-full inline-flex justify-center items-center gap-2">
-          <div className="w-6 text-center justify-start text-black text-2xl font-medium leading-normal">
-            ⚡
-          </div>
+          <Image
+            src="/images/home/spoke.png"
+            alt="Ícone de um raio"
+            width={24}
+            height={24}
+          />
+
           <div className="justify-center text-white text-2xl font-medium leading-normal">
             Quero automatizar meu WhatsApp agora
           </div>

@@ -24,15 +24,27 @@ const fadeInDown = {
 
 const fadeInFirstShape = {
   hidden: { opacity: 0, scale: 0.95 },
-  show: { opacity: 0.55, scale: 1, transition: { duration: 1, ease: "easeOut" } },
+  show: {
+    opacity: 0.55,
+    scale: 1,
+    transition: { duration: 1, ease: "easeOut" },
+  },
 };
 const fadeInSecondShape = {
   hidden: { opacity: 0, scale: 0.95 },
-  show: { opacity: 0.30, scale: 1, transition: { duration: 1, ease: "easeOut" } },
+  show: {
+    opacity: 0.3,
+    scale: 1,
+    transition: { duration: 1, ease: "easeOut" },
+  },
 };
 const fadeInThirdShape = {
   hidden: { opacity: 0, scale: 0.95 },
-  show: { opacity: 0.20, scale: 1, transition: { duration: 1, ease: "easeOut" } },
+  show: {
+    opacity: 0.2,
+    scale: 1,
+    transition: { duration: 1, ease: "easeOut" },
+  },
 };
 
 const bounce = {
@@ -97,7 +109,7 @@ export const Hero = () => {
           ))}
         </div>
 
-        <div className="px-6 py-4 bg-blue-600 rounded-[999px] shadow-[0px_0px_2px_0px_rgba(0,0,0,0.10)] inline-flex justify-center items-center gap-2">
+        <div className="px-6 py-4 bg-blue-600 rounded-full inline-flex justify-center items-center gap-2">
           <div className="justify-center text-white text-xl font-medium leading-normal">
             Teste gratuitamente
           </div>
@@ -112,7 +124,7 @@ export const Hero = () => {
         animate="show"
       >
         <motion.div className="mb-2" variants={fadeInUp}>
-          <div className="px-2.5 py-1 rounded-[999px] outline outline-offset-[-1px] outline-blue-600 inline-flex justify-center items-center gap-2.5">
+          <div className="px-2.5 py-1 rounded-full outline outline-offset-[-1px] outline-blue-600 inline-flex justify-center items-center gap-2.5">
             <div className="w-4 h-4 relative">
               <Image
                 src="/images/home/hero/ai.svg"
@@ -138,11 +150,18 @@ export const Hero = () => {
         </motion.div>
 
         <motion.div className="mt-8" variants={fadeInUp}>
-          <div className="px-6 py-4 bg-blue-600 rounded-[999px] shadow-[0px_2px_32px_0px_rgba(64,164,225,1.00)] inline-flex justify-center items-center gap-2">
-            <div className="justify-center text-white text-xl font-medium font-['Host_Grotesk'] leading-normal">
-              Agende sua demonstração gratuita
-            </div>
-          </div>
+          <button className="px-6 py-4 bg-blue-600 rounded-full inline-flex justify-center items-center gap-2 cursor-pointer">
+            <Image
+              src="/images/home/spoke.png"
+              alt="Ícone de um raio"
+              width={24}
+              height={24}
+            />
+
+            <span className="justify-center text-white text-xl font-medium font-['Host_Grotesk'] leading-normal">
+              Comece grátis agora
+            </span>
+          </button>
         </motion.div>
       </motion.div>
 

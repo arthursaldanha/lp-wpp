@@ -3,7 +3,17 @@
 import { useRef } from "react";
 
 import Slider from "react-slick";
-import { ArrowLeft, ArrowRight, ChartSpline, ExternalLink, Goal, Lightbulb, MessageCircleMore, ShoppingCart, Zap } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ChartSpline,
+  ExternalLink,
+  Goal,
+  Lightbulb,
+  MessageCircleMore,
+  ShoppingCart,
+  Zap,
+} from "lucide-react";
 
 const benefits = [
   {
@@ -94,11 +104,11 @@ export const Benefits = () => {
           perder tempo, vendas e clientes
         </div>
 
-        <div className="px-6 py-4 rounded-full border border-blue-600 inline-flex justify-center items-center gap-2">
+        <button className="px-6 py-4 rounded-full border border-blue-600 inline-flex justify-center items-center gap-2 cursor-pointer">
           <div className="justify-center text-blue-600 text-2xl font-medium leading-normal">
             Testar grátis agora mesmo
           </div>
-        </div>
+        </button>
       </div>
 
       <div className="w-full px-4">
