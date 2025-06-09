@@ -1,0 +1,25 @@
+site_name: meta-tech-flow-lp
+
+site_description: Meta Tech Flow Landing Page
+
+nav:
+  - Overview: index.md
+  - Diagrams: diagrams.md 
+  - Pull Request: pull-request.md
+  - Quality Gate: quality-gate.md
+  - Versioning: versioning.md
+  - Continuous Integration: ci.md
+  - Changelog: changelog.md
+  - Extras: extras.md
+  
+plugins:
+  - techdocs-core
+  - search
+  - diagrams:
+      file_extension: ".diagrams.py"
+      max_workers: 5
+
+extra_javascript:
+  - https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js
+
+  

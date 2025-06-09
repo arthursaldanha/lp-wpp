@@ -1,0 +1,91 @@
+############################
+# CONFIGURAÇÔES DO USUÀRIO #
+############################
+#
+# ROTAS A SEREM DECLARADAS
+#
+
+routes:
+  - uri: "/mypharma/metatech*"
+    plugins:
+      proxy-rewrite:
+        regex_uri:
+          - "^\\/mypharma/metatech[\\/]?(.*)$"
+          - "/$1"
+      # Reescrita de resposta (comentado). Modifica a resposta enviada ao cliente, útil para mock ou alterações de conteúdo.
+      response-rewrite:
+        filters:
+          - regex: /swagger/([^\/]+)/swagger.json
+            replace: /mypharma/metatech/swagger/$1/swagger.json
+            scope: global
+      # Autenticação baseada em chave (comentado). Quando habilitado, exige uma chave de API válida para acesso.
+      # key-auth: {}
+      
+      # Lista de controle de acesso (ACL) (comentado). Permite acesso apenas para consumidores listados.
+      # acl:
+      #   whitelist:
+      #     - d-ms-demo002-93d80054.default-consumer
+      
+      # Configurações de CORS (comentado). Define as origens e métodos permitidos para solicitações cross-origin.
+      # cors: 
+      #   allow_origins: "*",
+      #   allow_methods": ["GET", "POST"]
+      
+      # Restrição de IP (comentado). Limita o acesso à rota a endereços IP específicos.
+      # ip-restriction:
+      #   whitelist:
+      #     - "192.168.1.0/24"
+
+      # Limitação de taxa (comentado). Define limites para a quantidade de solicitações permitidas por um identificador específico.
+      # rate-limiting:
+      #   rate: 10
+      #   burst: 20
+      #   key: "remote_addr"
+
+      # Cache de proxy (comentado). Configura o armazenamento em cache de respostas para otimizar a entrega de conteúdo.
+      # proxy-cache:
+      #   cache_zone: "zone_one"
+      #   cache_key:
+      #     - "uri"
+      #     - "args"
+      #   cache_bypass:
+      #     - "$arg_bypass"
+      #   cache_http_status:
+      #     - 200
+      #     - 404
+      #   hide_cache_headers: "on"
+
+      # Reescrita de resposta (comentado). Modifica a resposta enviada ao cliente, útil para mock ou alterações de conteúdo.
+      # response-rewrite:
+      #   status_code: 200
+      #   body: "{\"message\": \"Esta é uma resposta mock\"}"
+      #   headers:
+      #     Content-Type: "application/json"
+
+
+#
+# TIPO DE EXPOSIÇÃO
+#
+# private - para somente privado
+# public para exposição publica e privada
+# custom - para exposição com hostname customizado
+#
+expose_type: "public"
+
+expose_type_custom: {}
+
+
+#
+# FLUXO EXTERNO
+#
+
+external_stream: 
+  host: meta-tech-flow
+  port: 3000
+  weight: 1
+
+
+#
+# Key do consumer
+#
+consumer_key: 07d6115b-9f99-4b72-ad8c-4708d43cf4cf

@@ -1,0 +1,51 @@
+- url: https://dev.azure.com/farmaciasapp/mypharma
+  title: Team Project
+  icon: group
+
+- url: https://dev.azure.com/farmaciasapp/mypharma/_git/gsc.nextjs.ssr.meta-tech-flow-lp
+  title: Repository
+  icon: web
+
+- url: https://dev.azure.com/farmaciasapp/mypharma/_library?itemType=VariableGroups
+  title: Variables Group (Library)
+  icon: web
+
+- url: https://rancher.fapp.corp/dashboard/
+  title: Rancher Kubernetes Manager
+  icon: dashboard
+
+- url: https://os-dashboard.fapp.corp/app/login
+  title: Logging and Metrics (PRD)
+  icon: dashboard
+
+- url: https://os-dashboard-stg.fapp.corp/app/login
+  title: Logging and Metrics (STG)
+  icon: dashboard
+
+- url: https://skywalking.k8s-prd.fapp.corp/general
+  title: APM and Trace Services (PRD)
+  icon: Trace
+
+- url: https://skywalking.k8s-prd.fapp.corp/general
+  title: APM and Trace Services (STG)
+  icon: Trace
+
+- url: https://skywalking.k8s-prd.fapp.corp/alerting
+  title: Alerts Skywalking (PRD)
+  icon: alert
+
+- url: https://skywalking.k8s-stg.fapp.corp/alerting
+  title: Alerts Skywalking (STG)
+  icon: alert
+
+- url: https://185a3dcd.k8s-svc-stg.fapp.corp
+  title: Private dns dev (Needed enable)
+  icon: web
+
+- url: https://da97815e.k8s-svc-stg.fapp.corp
+  title: Private dns hml (Needed enable)
+  icon: web
+
+- url: https://48a405b7.k8s-svc-prd.fapp.corp
+  title: Private dns prd (Needed enable)
+  icon: web

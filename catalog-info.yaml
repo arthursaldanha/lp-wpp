@@ -1,0 +1,39 @@
+#+----------------------------------------------------------+
+#|               Evite alterar este arquivo                 |
+#|              Só altere se for recomendado                |
+#| Alterações erradas podem impactar a entrega da aplicação |
+#+----------------------------------------------------------+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: meta-tech-flow-lp-b1b405d1
+  description: Meta Tech Flow Landing Page
+  links:
+    $yaml: .catalog/links.yaml
+  tags:
+    $yaml: .catalog/tags.yaml   
+  annotations:
+    # Backstage default annotations  
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/code-coverage: scm-only
+    backstage.io/template-origin: template:default/gsc-tmpl-dotnet-app
+    backstage.io/repo-url: dev.azure.com/?organization=farmaciasapp&owner=mypharma&repo=gsc.nextjs.ssr.meta-tech-flow-lp
+    # Azure DevOps Plugin
+    dev.azure.com/project-repo: "mypharma/gsc.nextjs.ssr.meta-tech-flow-lp"
+    # Sonar Plugin
+    sonarqube.org/project-key: "meta-tech-flow-lp-b1b405d1"
+    # Custom Annotations
+    gsc.io/helm-release-name: "ssr-meta-tech-flow-lp"
+    gsc.io/domain: "mypharma"
+    gsc.io/system: "metatech"
+    # Kubernetes variables
+    gsc.io/kubernetes-cluster-id: "svc"
+    gsc.io/kubernetes-k8s-namespace-dev: "metatech"
+    gsc.io/kubernetes-k8s-namespace-hml: "metatech"
+    gsc.io/kubernetes-k8s-namespace-prd: "metatech"
+    apisix.io/instance: "svc"
+spec:
+  type: website
+  lifecycle: production
+  owner: "my-pharma"
+  system: "metatech"

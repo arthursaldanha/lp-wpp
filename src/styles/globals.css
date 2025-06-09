@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-xs: 30rem;
+}
+.slick-track {
+  display: flex;
+
+  .slick-slide {
+    height: auto;
+    display: flex;
+
+    > div {
+      display: flex;
+    }
+  }
+}

@@ -1,0 +1,166 @@
+# Default values for generic-nodejs-api.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+# -- Number of replicas
+replicaCount: 1
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+
+nameOverride: "sample-microservice"
+fullnameOverride: "sample-microservice"
+containerName: "sample-microservice"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+# container settings
+container:
+  port: 3000
+  schema: HTTP
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: 
+    cert-manager.io/cluster-issuer: "fapp-cluster-issuer"
+    cert-manager.io/common-name: "185a3dcd.k8s-svc-stg.fapp.corp"
+    # nginx.ingress.kubernetes.io/configuration-snippet: |
+    #   proxy_set_header l5d-dst-override $service_name.$namespace.svc.cluster.local:$service_port;
+    #   grpc_set_header l5d-dst-override $service_name.$namespace.svc.cluster.local:$service_port;
+  hosts:
+  - host: "185a3dcd.k8s-svc-stg.fapp.corp"
+    paths:
+    - path: /
+      pathType: Prefix
+  tls: 
+  - secretName: "185a3dcd.k8s-svc-stg.fapp.corp"
+    hosts:
+    - "185a3dcd.k8s-svc-stg.fapp.corp"
+
+# See https://linkerd.io/2/overview/
+linkerd:
+  inject: "disabled"
+  proxyCpuLimit: "500m"
+  proxyCpuRequest: "20m"
+  proxyMemoryLimit: "512Mi"
+  proxyMemoryRequest: "50Mi"
+
+# See https://keda.sh/
+keda:
+  enabled: false
+  pollingInterval: 10   # default 30
+  cooldownPeriod: 60    # default 300
+  minReplicaCount: 0    # default 0
+  maxReplicaCount: 64   # default 100
+  valueToYaml: []       # Types of triggers
+
+# We usually recommend not to specify default resources and to leave this as a conscious
+# choice for the user. This also increases chances charts run on environments with little
+# resources, such as Minikube. If you do want to specify resources, uncomment the following
+# lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 12
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+# See https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
+nodeSelector: {}
+
+# See https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
+tolerations: []
+
+# See https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/
+affinity: {}
+
+# See https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+liveness:
+  enabled: true
+  failureThreshold: 3
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 30
+  healthCheck: /api/health
+
+# See https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+readiness:
+  enabled: true
+  failureThreshold: 3
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 30
+  healthCheck: /api/health
+
+# Additional keys that will be added to the configmap.
+# See the examples below.
+configMapKeys: {}
+  # key: value
+
+  # configuration: |
+  #   #!/bin/bash
+  #   echo teste ..  
+
+# Environment variables that will be used by the worker.
+# See the example below.
+applicationVariables: []
+# - name: MY_VARIABLE_NAME
+#   value: "MY VARIABLE VALUE"
+
+# - name: MY_VARIABLE_NAME2
+#   valueFrom:
+#     configMapKeyRef:    
+#       name: MY_CONFIGMAP_NAME
+#       key:  MY_CONFIGMAP_KEY
+
+volumes:
+#- name: my-volume
+#  persistentVolumeClaim:
+#  claimName: my-volume-claim-name
+#- name: my-volume-2
+#  persistentVolumeClaim:
+#  claimName: my-volume-2-claim-name
+
+volumeMounts:
+#- name: my-volume
+#  mountPath: /my_volume
+#- name: my-volume-2
+#  mountPath: /my_volume_2

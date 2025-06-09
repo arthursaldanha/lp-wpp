@@ -1,0 +1,5 @@
+# NUNCA DEFINA VALORES SECRETOS AQUI. Utilize o secrets.yml na raiz do .azuredevops
+env: []
+# - name: SW_AGENT_ENABLE
+#   value: "false"
+
