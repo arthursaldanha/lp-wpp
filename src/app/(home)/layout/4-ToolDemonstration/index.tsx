@@ -77,10 +77,10 @@ export function ToolDemonstration() {
           initial={{ opacity: 0, x: -100 }}
           animate={isVisible ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="absolute top-[112px] -left-[320px] w-full max-w-[400px] pl-2 py-2 pr-3.5 rounded-2xl shadow-md bg-white flex items-center gap-2"
+          className="absolute -top-8 -left-1/2 w-full max-w-[400px] pl-2 py-2 pr-3.5 rounded-2xl shadow-md bg-white flex items-center gap-2"
         >
           <Image
-            src="/images/home/tool-demonstration/fapp-ecomm.svg"
+            src="/images/home/hero/wpp.svg"
             alt="Ícone"
             width={40}
             height={40}
