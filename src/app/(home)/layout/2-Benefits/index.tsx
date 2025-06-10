@@ -57,7 +57,7 @@ export const Benefits = ({ experience }: { experience: DisclosureReturn }) => {
   };
 
   return (
-    <section className="py-20 flex flex-col justify-center items-center gap-14">
+    <section id="services" className="py-20 flex flex-col justify-center items-center gap-14">
       {/* Cabeçalho com animação */}
       <motion.div
         className="space-y-6 text-center"
@@ -121,7 +121,7 @@ export const Benefits = ({ experience }: { experience: DisclosureReturn }) => {
               variants={fadeUp}
             >
               <div className="w-[322px] h-[360px] xl:h-[408px] py-8 px-6 rounded-2xl border border-solid border-blue-100 hover:bg-[#D4EEFF] flex flex-col gap-3 transition-colors duration-150 ease-in group">
-                <div className="w-14 h-14 rounded-full bg-blue-100 inline-flex justify-center items-center group-hover:bg-[#1B2733] transition-colors duration-150 ease-in">
+                <div className="w-14 h-14 flex-none rounded-full bg-blue-100 inline-flex justify-center items-center group-hover:bg-[#1B2733] transition-colors duration-150 ease-in">
                   <Icon
                     size={24}
                     className="text-[#1B2733] group-hover:text-[#D4EEFF] transition-colors duration-150 ease-in"

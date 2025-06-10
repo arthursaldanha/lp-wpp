@@ -21,7 +21,8 @@ export default function Home() {
       <Hero experience={experience} />
       <Benefits experience={experience} />
       <HowItWorks experience={experience} />
-      <ToolDemonstration />
+      {/* Tem alo errado aqui com as animações */}
+      <ToolDemonstration /> 
       <Steps experience={experience} />
       <PricingPlans experience={experience} />
       <FAQ experience={experience} />

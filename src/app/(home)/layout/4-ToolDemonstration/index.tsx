@@ -169,7 +169,7 @@ export function ToolDemonstration() {
         >
           <div className="text-start space-y-2">
             <p className="text-black text-base font-normal">
-              Oi <span className="font-medium">José</span>, aqui é do Whatsapp
+              Oi <span className="font-medium">Anna</span>, aqui é do Whatsapp
               Farma!
             </p>
             <p className="text-black text-base font-normal">

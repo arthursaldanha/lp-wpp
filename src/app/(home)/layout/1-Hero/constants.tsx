@@ -1,6 +1,6 @@
 export const headerNavItems = [
-  { title: "Serviços", nav: "/" },
+  { title: "Serviços", nav: "#services" },
   { title: "Planos", nav: "#pricing-plans" },
-  { title: "Termos", nav: "/" },
+  { title: "Termos", nav: "/terms" },
   { title: "Dúvidas", nav: "#faq" },
 ];

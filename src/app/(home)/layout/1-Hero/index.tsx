@@ -96,12 +96,14 @@ export const Hero = ({ experience }: { experience: DisclosureReturn }) => {
         animate="show"
         transition={{ delay: 0.6 }}
       >
-        <Image
-          src="/images/logo.svg"
-          alt="Logo do Whatsapp Farma"
-          width={150}
-          height={34.39}
-        />
+        <Link href="/">
+          <Image
+            src="/images/logo.svg"
+            alt="Logo do Whatsapp Farma"
+            width={150}
+            height={34.39}
+          />
+        </Link>
 
         <div className="flex items-center">
           {headerNavItems.map(({ title, nav }) => (
@@ -115,7 +117,10 @@ export const Hero = ({ experience }: { experience: DisclosureReturn }) => {
           ))}
         </div>
 
-        <button onClick={experience.onOpen} className="px-6 py-4 bg-blue-600 rounded-full cursor-pointer">
+        <button
+          onClick={experience.onOpen}
+          className="px-6 py-4 bg-blue-600 rounded-full cursor-pointer"
+        >
           <div className="justify-center text-white text-xl font-medium leading-normal">
             Teste gratuitamente
           </div>
@@ -124,12 +129,12 @@ export const Hero = ({ experience }: { experience: DisclosureReturn }) => {
 
       {/* Textos */}
       <motion.div
-        className="relative mt-28 ml-20 pb-[520px] xl:pb-[360px] z-20"
+        className="relative mt-28 ml-20 pb-[532px] xl:pb-[372px] z-20"
         variants={container}
         initial="hidden"
         animate="show"
       >
-        <motion.div className="mb-2" variants={fadeInUp}>
+        <motion.div className="mb-4" variants={fadeInUp}>
           <div className="px-2.5 py-1 rounded-full outline outline-offset-[-1px] outline-blue-600 inline-flex justify-center items-center gap-2.5">
             <div className="w-4 h-4 relative">
               <Image
@@ -147,17 +152,21 @@ export const Hero = ({ experience }: { experience: DisclosureReturn }) => {
         </motion.div>
 
         <motion.div className="space-y-4" variants={fadeInUp}>
-          <h1 className="text-slate-950 text-5xl font-bold leading-14">
+          <h1 className="text-slate-950 text-5xl font-bold leading-[56px]">
             Venda Mais pelo WhatsApp <br /> com Atendimento Automatizado
           </h1>
-          <h2 className="text-zinc-900 text-2xl font-medium leading-9">
-            Com o Whatsapp Farma, você cria atendimentos automáticos, <br />{" "}
-            organiza conversas e transforma mensagens em vendas!
+          <h2 className="text-zinc-900 text-2xl leading-9">
+            Com o <span className="font-medium">Whatsapp Farma</span>, você cria
+            atendimentos automáticos, <br /> organiza conversas e transforma
+            mensagens em vendas!
           </h2>
         </motion.div>
 
         <motion.div className="mt-8" variants={fadeInUp}>
-          <button onClick={experience.onOpen} className="px-6 py-4 bg-blue-600 rounded-full inline-flex justify-center items-center gap-2 cursor-pointer">
+          <button
+            onClick={experience.onOpen}
+            className="px-6 py-4 bg-blue-600 rounded-full inline-flex justify-center items-center gap-2 cursor-pointer"
+          >
             <Image
               src="/images/home/spoke.png"
               alt="Ícone de um raio"
