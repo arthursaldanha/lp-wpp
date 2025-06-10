@@ -42,6 +42,9 @@ module.exports = {
         'zoom-in-95': 'zoomIn95 200ms ease-out forwards',
         'zoom-out-95': 'zoomOut95 200ms ease-in forwards',
       },
+      fontFamily: {
+        roboto: ['var(--font-roboto)'],
+      },
     },
   },
   plugins: [],

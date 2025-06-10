@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Host_Grotesk } from "next/font/google";
+import { Host_Grotesk, Roboto } from "next/font/google";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import "@/styles/globals.css";
 
-const hostGrotesk = Host_Grotesk({ subsets: ["latin"], fallback: ["Arial"] });
+const hostGrotesk = Host_Grotesk({ subsets: ["latin"] });
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-roboto",
+});
 
 export const metadata: Metadata = {
   title: "Whatsapp Farma",
@@ -20,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={hostGrotesk.className}>{children}</body>
+      <body className={`${hostGrotesk.className} ${roboto.variable}`}>{children}</body>
     </html>
   );
 }

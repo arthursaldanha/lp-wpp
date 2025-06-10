@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
-
+import { useState, useRef } from "react";
 import { TbCircleArrowRightFilled } from "react-icons/tb";
-
 import { plans } from "@/app/(home)/layout/6-PricingPlans/constants";
 import { PricingCard } from "@/app/(home)/layout/6-PricingPlans/components/PricingCard";
 
+import { motion, useInView } from "framer-motion";
 import type { DisclosureReturn } from "@/hooks/useDisclosure";
 
 export const PricingPlans = ({
@@ -16,8 +15,18 @@ export const PricingPlans = ({
 }) => {
   const [selectedPlanId, setSelectedPlanId] = useState("base");
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
   return (
-    <section id="pricing-plans" className="space-y-20 py-[100px] flex flex-col">
+    <motion.section
+      id="pricing-plans"
+      ref={ref}
+      initial={{ opacity: 0, y: 60 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="space-y-20 py-[100px] flex flex-col"
+    >
       <div className="space-y-4 text-center">
         <div className="text-zinc-900 text-4xl font-medium">
           <p>
@@ -69,6 +78,6 @@ export const PricingPlans = ({
           </button>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };

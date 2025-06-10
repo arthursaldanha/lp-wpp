@@ -42,8 +42,20 @@ export function HowItWorks({ experience }: { experience: DisclosureReturn }) {
   }, []);
 
   return (
-    <section className="relative bg-[#f5fff8] py-20 px-10 xl:py-25 xl:px-20 space-y-20">
-      <div className="space-y-4">
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="relative bg-[#f5fff8] py-20 px-10 xl:py-25 xl:px-20 space-y-20"
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+        className="space-y-4"
+      >
         <div className="self-stretch text-center justify-center">
           <span className="text-gray-800 text-3xl font-medium leading-10">
             Deixe o atendimento no WhatsApp <br /> funcionando no{" "}
@@ -57,11 +69,18 @@ export function HowItWorks({ experience }: { experience: DisclosureReturn }) {
           Configure em minutos e atenda seus clientes mesmo <br /> quando sua
           equipe estiver offline
         </div>
-      </div>
+      </motion.div>
 
       <div className="flex justify-between gap-6">
         {/* Left side */}
-        <div ref={containerRef} className="flex-1 space-y-8">
+        <motion.div
+          ref={containerRef}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+          className="flex-1 space-y-8"
+        >
           <div className="flex flex-col gap-2">
             {steps.map((step, index) => (
               <motion.div
@@ -105,7 +124,9 @@ export function HowItWorks({ experience }: { experience: DisclosureReturn }) {
             ))}
           </div>
 
-          <button
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
             onClick={experience.onOpen}
             className="px-6 py-4 rounded-full bg-blue-600 inline-flex justify-center items-center gap-2"
           >
@@ -118,19 +139,25 @@ export function HowItWorks({ experience }: { experience: DisclosureReturn }) {
             <div className="justify-center text-white text-xl font-medium">
               Veja como funciona na prática
             </div>
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
 
         {/* Right side */}
-        <div className="max-w-[592px] flex-1 relative">
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+          className="relative max-w-[480px] flex-1"
+        >
           <Image
-            src="/images/home/wpp-ecomm/woman.png"
-            alt="Mulher usando celular"
-            width={592}
-            height={619}
+            src="/images/home/wpp-ecomm/farma.png"
+            alt="Dupla de farmacêuticos"
+            width={480}
+            height={609}
           />
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

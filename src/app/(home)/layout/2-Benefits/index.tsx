@@ -3,10 +3,24 @@
 import { useRef } from "react";
 
 import Slider from "react-slick";
+import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { benefits } from "@/app/(home)/layout";
 import type { DisclosureReturn } from "@/hooks/useDisclosure";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.15,
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  }),
+};
 
 export const Benefits = ({ experience }: { experience: DisclosureReturn }) => {
   const sliderRef = useRef<Slider>(null);
@@ -44,8 +58,19 @@ export const Benefits = ({ experience }: { experience: DisclosureReturn }) => {
 
   return (
     <section className="py-20 flex flex-col justify-center items-center gap-14">
-      <div className="space-y-6 text-center">
-        <div className="self-stretch text-center justify-center">
+      {/* Cabeçalho com animação */}
+      <motion.div
+        className="space-y-6 text-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={fadeUp}
+      >
+        <motion.div
+          className="self-stretch text-center justify-center"
+          custom={0}
+          variants={fadeUp}
+        >
           <span className="text-gray-800 text-3xl font-medium leading-10">
             Atender no WhatsApp consome <br />
             tempo e energia?{" "}
@@ -53,28 +78,48 @@ export const Benefits = ({ experience }: { experience: DisclosureReturn }) => {
           <span className="text-blue-600 text-3xl font-medium leading-10">
             A gente resolve
           </span>
-        </div>
+        </motion.div>
 
-        <div className="text-center justify-start text-gray-800 text-xl font-medium">
+        <motion.div
+          className="text-center justify-start text-gray-800 text-xl font-medium"
+          custom={1}
+          variants={fadeUp}
+        >
           Atendimento manual atrasa seu crescimento. Automatize e pare de <br />{" "}
           perder tempo, vendas e clientes
-        </div>
+        </motion.div>
 
-        <button onClick={experience.onOpen} className="px-6 py-4 rounded-full border border-blue-600 inline-flex justify-center items-center gap-2 cursor-pointer">
+        <motion.button
+          onClick={experience.onOpen}
+          className="px-6 py-4 rounded-full border border-blue-600 inline-flex justify-center items-center gap-2 cursor-pointer"
+          custom={2}
+          variants={fadeUp}
+        >
           <div className="justify-center text-blue-600 text-2xl font-medium leading-normal">
             Testar grátis agora mesmo
           </div>
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
 
-      <div className="w-full px-4">
+      {/* Carrossel */}
+      <motion.div
+        className="w-full px-4"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <Slider
           {...settings}
           ref={sliderRef}
           className="flex gap-6 !ml-[-12px] !mr-[-12px]"
         >
           {benefits.map(({ title, description, Icon }, index) => (
-            <div key={index} className="!px-3 h-full flex items-stretch">
+            <motion.div
+              key={index}
+              className="!px-3 h-full flex items-stretch"
+              custom={index}
+              variants={fadeUp}
+            >
               <div className="w-[322px] h-[360px] xl:h-[408px] py-8 px-6 rounded-2xl border border-solid border-blue-100 hover:bg-[#D4EEFF] flex flex-col gap-3 transition-colors duration-150 ease-in group">
                 <div className="w-14 h-14 rounded-full bg-blue-100 inline-flex justify-center items-center group-hover:bg-[#1B2733] transition-colors duration-150 ease-in">
                   <Icon
@@ -89,12 +134,20 @@ export const Benefits = ({ experience }: { experience: DisclosureReturn }) => {
                   {description}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </Slider>
-      </div>
+      </motion.div>
 
-      <div className="inline-flex items-center gap-4">
+      {/* Navegação do slider */}
+      <motion.div
+        className="inline-flex items-center gap-4"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.4 }}
+        variants={fadeUp}
+        custom={benefits.length + 1}
+      >
         <button
           onClick={() => sliderRef.current?.slickPrev()}
           className="w-12 h-12 rounded-full inline-flex justify-center items-center hover:bg-[#D4EEFF] cursor-pointer transition-all duration-200"
@@ -108,7 +161,7 @@ export const Benefits = ({ experience }: { experience: DisclosureReturn }) => {
         >
           <ArrowRight size={28} className="text-[#1B2733]" />
         </button>
-      </div>
+      </motion.div>
     </section>
   );
 };
