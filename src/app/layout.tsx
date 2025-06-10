@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import "@/styles/globals.css";
 
-const hostGrotesk = Host_Grotesk({ subsets: ["latin"] });
+const hostGrotesk = Host_Grotesk({ subsets: ["latin"], fallback: ["Arial"] });
 
 export const metadata: Metadata = {
   title: "Whatsapp Farma",
