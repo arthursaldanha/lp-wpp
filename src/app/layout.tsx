@@ -6,6 +6,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 import "@/styles/globals.css";
 
+const hostGrotesk = Host_Grotesk({ subsets: ["latin"], fallback: ["Arial"] });
+
 export const metadata: Metadata = {
   title: "Whatsapp Farma",
   description: "A solução que sua farmácia precisa!",
@@ -18,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body className={hostGrotesk.className}>{children}</body>
     </html>
   );
 }

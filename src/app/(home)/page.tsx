@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="max-w-[1440px] w-full mx-auto">
       <Hero />
-      <Benefits />
+      {/* <Benefits /> */}
       <WppEcomm />
       <WhoIsItFor />
       <PricingPlans />
