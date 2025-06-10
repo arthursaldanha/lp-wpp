@@ -7,6 +7,7 @@ import {
   ToolDemonstration,
   Steps,
   PricingPlans,
+  Form,
   FAQ,
 } from "@/app/(home)/layout";
 import { ExperienceDialog } from "@/app/(home)/components/ExperienceDialog";
@@ -22,9 +23,10 @@ export default function Home() {
       <Benefits experience={experience} />
       <HowItWorks experience={experience} />
       {/* Tem alo errado aqui com as animações */}
-      <ToolDemonstration /> 
+      <ToolDemonstration />
       <Steps experience={experience} />
       <PricingPlans experience={experience} />
+      <Form />
       <FAQ experience={experience} />
 
       <ExperienceDialog

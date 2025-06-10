@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import "@/styles/globals.css";
+import { Providers } from "@/app/providers";
 
 const hostGrotesk = Host_Grotesk({ subsets: ["latin"] });
 
@@ -26,7 +27,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={`${hostGrotesk.className} ${roboto.variable}`}>{children}</body>
+      <body className={`${hostGrotesk.className} ${roboto.variable}`}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

@@ -12,4 +12,6 @@ export * from "./5-Steps"
 
 export * from "./6-PricingPlans"
 
-export * from "./7-FAQ"
+export * from "./7-Form"
+
+export * from "./8-FAQ"

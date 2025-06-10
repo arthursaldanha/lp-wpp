@@ -11,7 +11,7 @@ import { Plus } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
-import { faqData } from "@/app/(home)/layout/7-FAQ/constants";
+import { faqData } from "@/app/(home)/layout/8-FAQ/constants";
 import type { DisclosureReturn } from "@/hooks/useDisclosure";
 
 const fadeUp = (delay = 0) => ({
