@@ -3,10 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { motion } from "framer-motion";
+import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 
 import { headerNavItems } from "@/app/(home)/layout";
 import type { DisclosureReturn } from "@/hooks/useDisclosure";
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 const container = {
   hidden: {},
@@ -64,6 +66,30 @@ const bounce = {
 };
 
 export const Hero = ({ experience }: { experience: DisclosureReturn }) => {
+  const percentage = useMotionValue(10);
+  const rounded = useTransform(
+    percentage,
+    (latest) => `${Math.round(latest)}%`
+  );
+
+  const [displayValue, setDisplayValue] = useState("10%");
+
+  useEffect(() => {
+    const unsubscribe = rounded.on("change", (v) => {
+      setDisplayValue(v);
+    });
+
+    const controls = animate(percentage, 100, {
+      duration: 20,
+      ease: "linear",
+    });
+
+    return () => {
+      controls.stop();
+      unsubscribe();
+    };
+  }, []);
+
   return (
     <div className="relative overflow-hidden">
       {/* Shapes */}
@@ -217,16 +243,31 @@ export const Hero = ({ experience }: { experience: DisclosureReturn }) => {
 
           {/* Placa receita com bounce */}
           <motion.div
-            className="absolute bottom-[104px] -left-12 p-5 bg-white rounded-lg inline-flex flex-col justify-start items-start gap-2"
+            className="absolute bottom-[104px] -left-12 p-4 bg-white rounded-lg"
             variants={bounce}
             animate="animate"
           >
-            <div className="self-stretch flex flex-col justify-start items-start gap-1">
-              <div className="justify-start text-slate-950 text-base font-semibold leading-tight">
-                Aumente sua receita
+            <div className="flex flex-col justify-center items-center gap-2">
+              <div className="relative">
+                <Image
+                  src="/images/home/hero/waves.svg"
+                  alt="Ilustração de ondas"
+                  width={116.07}
+                  height={76.45}
+                />
+                <span
+                  className={cn(
+                    "absolute top-[9px] text-[10px] font-medium text-white",
+                    displayValue.length === 3 && "left-[40px]",
+                    displayValue.length === 4 && "left-[37px]"
+                  )}
+                >
+                  {displayValue}
+                </span>
               </div>
-              <div className="self-stretch justify-start text-sky-400 text-lg font-bold leading-snug">
-                +4.0000 lojas
+
+              <div className="text-slate-950 text-sm font-semibold">
+                Veja sua receita crescer
               </div>
             </div>
           </motion.div>
@@ -240,16 +281,16 @@ export const Hero = ({ experience }: { experience: DisclosureReturn }) => {
             <Image
               src="/images/home/hero/avatars.svg"
               alt="Avatars"
-              width={96}
+              width={68}
               height={40}
             />
 
             <div className="inline-flex flex-col justify-start items-start">
               <div className="self-stretch justify-start text-slate-950 text-base font-semibold leading-tight">
-                1000+
+                A solução ideal
               </div>
-              <div className="justify-start text-gray-600 text-sm font-normal leading-tight">
-                Ativos em nossa solução
+              <div className="justify-start text-gray-600 text-xs font-normal leading-tight">
+                para vender mais com menos esforço
               </div>
             </div>
           </motion.div>
