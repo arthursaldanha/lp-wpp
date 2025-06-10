@@ -1,78 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { PricingCard } from "@/app/(home)/layout/6-PricingPlans/components/PricingCard";
+
 import { TbCircleArrowRightFilled } from "react-icons/tb";
 
-const plans = [
-  {
-    id: "base",
-    name: "Plano Básico",
-    description:
-      "Ideal para farmácias que desejam ativar o canal de vendas no WhatsApp com atendimento automático e estrutura essencial",
-    price: 189.0,
-    features: [
-      { text: "1 número de whatsapp" },
-      { text: "Fluxo conversacional padrão de atendimento" },
-      { text: "Atendimento automático e respostas rápidas" },
-      { text: "Usuários adicionais: R$ 50/mês por usuário" },
-    ],
-    button: {
-      text: "Contratar",
-      onClick: () => console.log("Contratar plano Base"),
-    },
-    disclaimer: "",
-  },
-  {
-    id: "premium",
-    name: "Plano Premium (Profissional)",
-    description:
-      "Para farmácias que desejam expandir e profissionalizar o atendimento no WhatsApp com mais recursos e automações",
-    price: 284.0,
-    mostRequested: true,
-    startingFrom: "",
-    features: [
-      { text: "Até 3 números de WhatsApp" },
-      { text: "Catálogo de produtos" },
-      { text: "Menu de atendimento personalizado" },
-      { text: "Rastreamento de pedidos via WhatsApp" },
-      { text: "Usuários adicionais: R$ 50/mês por usuário" },
-    ],
-    button: {
-      text: "Contratar",
-      onClick: () => console.log("Falar com vendas sobre Tracking"),
-    },
-    disclaimer: "",
-  },
-  {
-    id: "enterprise",
-    name: "Plano Enterprise (Personalizável)",
-    description:
-      "Solução avançada para redes de farmácia ou operações com grande volume de mensagens e necessidade de personalização",
-    price: 499.0,
-    features: [
-      { text: "Até 5 números de WhatsApp" },
-      { text: "Catálogo de produtos selecionado" },
-      { text: "Customização completa dos fluxos" },
-      { text: "Menu de atendimento totalmente personalizável" },
-      { text: "Link de compra direta via WhatsApp" },
-      { text: "Integrações avançadas" },
-      { text: "Suporte prioritário e atendimento dedicado" },
-      { text: "Usuários adicionais: R$ 50/mês por usuário" },
-    ],
-    button: {
-      text: "Falar com vendas",
-      onClick: () => console.log("Falar com vendas sobre Marketing"),
-    },
-    disclaimer: "",
-  },
-];
+import { plans } from "@/app/(home)/layout/6-PricingPlans/constants";
+import { PricingCard } from "@/app/(home)/layout/6-PricingPlans/components/PricingCard";
 
-export const PricingPlans = () => {
+import type { DisclosureReturn } from "@/hooks/useDisclosure";
+
+export const PricingPlans = ({
+  experience,
+}: {
+  experience: DisclosureReturn;
+}) => {
   const [selectedPlanId, setSelectedPlanId] = useState("base");
 
   return (
-    <section className="space-y-20 py-25 flex flex-col">
+    <section id="pricing-plans" className="space-y-20 py-[100px] flex flex-col">
       <div className="space-y-4 text-center">
         <div className="text-zinc-900 text-4xl font-medium">
           <p>
@@ -98,6 +43,7 @@ export const PricingPlans = () => {
                   {...plan}
                   isSelected={selectedPlanId === plan.id}
                   onSelect={setSelectedPlanId}
+                  experience={experience}
                 />
               ))}
             </div>
@@ -105,14 +51,17 @@ export const PricingPlans = () => {
 
           <div className="max-w-xl lg:max-w-none text-center text-neutral-500 text-lg font-medium">
             <span>
-              Ao contratar todas as soluções você pode ter a negociação de taxas
-              reduzidas, consulte nosso time de consultores.
+              Valores do gateway acrescidos do take rate conforme o plano
+              contratado. Consulte as taxas aplicáveis
             </span>
           </div>
         </div>
 
         <div className="text-center">
-          <button className="py-4 px-6 inline-flex items-center gap-1 text-blue-600 cursor-pointer">
+          <button
+            onClick={experience.onOpen}
+            className="py-4 px-6 inline-flex items-center gap-1 text-blue-600 cursor-pointer"
+          >
             <span className="text-2xl font-medium">
               Fale com um especialista
             </span>

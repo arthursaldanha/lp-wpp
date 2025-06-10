@@ -1,7 +1,13 @@
-/* @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  --breakpoint-xs: 30rem;
+@layer utilities {
+  :root {
+    --breakpoint-xs: 30rem;
+    --animate-accordion-down: accordion-down 0.2s ease-out;
+    --animate-accordion-up: accordion-up 0.2s ease-out;
+  }
 
   @keyframes accordion-down {
     0% {
@@ -20,10 +26,12 @@
       height: 0;
     }
   }
-
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 .slick-track {
   display: flex;
 
@@ -35,18 +43,13 @@
       display: flex;
     }
   }
-} */
+}
 
-/* the slides */
-/* .slick-slide {
-  margin: 0 27px;
-} */
-
-/* the parent */
-/* .slick-list {
-  margin: 0 -27px;
-} */
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.mask-video {
+  -webkit-mask-image: url("/images/home/tool-demonstration/mask-iphone.png");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-image: url("/images/home/tool-demonstration/mask-iphone.png");
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}

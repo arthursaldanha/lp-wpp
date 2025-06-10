@@ -1,13 +1,14 @@
 import { Check } from "lucide-react";
 import { TbCircleArrowRightFilled } from "react-icons/tb";
 
+import type { DisclosureReturn } from "@/hooks/useDisclosure";
+
 interface PlanFeature {
   text: string;
 }
 
 interface PlanButtonProps {
   text: string;
-  onClick?: () => void;
 }
 
 interface PricingCardProps {
@@ -24,6 +25,7 @@ interface PricingCardProps {
   startingFrom?: string;
   disclaimer?: string;
   isPerMessage?: boolean;
+  experience: DisclosureReturn;
 }
 
 export const PricingCard: React.FC<PricingCardProps> = ({
@@ -39,6 +41,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
   onSelect,
   startingFrom,
   disclaimer,
+  experience,
 }) => {
   const handleCardClick = (e: React.MouseEvent) => {
     if (!(e.target as HTMLElement).closest("button") && onSelect) {
@@ -128,7 +131,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
             className="w-full p-4 rounded-full flex items-center justify-center bg-[#007AFF] text-white text-base font-medium hover:bg-opacity-90 transition-colors cursor-pointer"
             onClick={(e) => {
               e.stopPropagation();
-              button.onClick && button.onClick();
+              experience.onOpen();
             }}
           >
             {button.text}
