@@ -1,13 +1,14 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
-import { FaCheckCircle } from "react-icons/fa";
+import { Plus } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@radix-ui/react-accordion";
+import { clsx } from "clsx";
+import Image from "next/image";
 
 const faqData = [
   {
@@ -120,44 +121,95 @@ const faqData = [
 
 export const FAQ = () => {
   return (
-    <section className="pt-10 px-4 pb-20 md:px-20 xl:pt-20 xl:pb-46 flex flex-col lg:flex-row justify-between gap-17.5">
-      <div>
-        <div className="px-2.5 py-2 bg-[#E6EFFE] rounded-xl justify-center items-center gap-2.5 inline-flex">
-          <span className="text-[#42a4e1] text-base font-semibold font-['Host Grotesk'] uppercase leading-normal tracking-wide break-keep">
-            AINDA COM DÚVIDAS?
-          </span>
+    <section className="py-20 px-10 xl:p-20 space-y-18">
+      <div className="space-y-8 text-center">
+        <div>
+          <h3 className="text-zinc-900 text-4xl font-semibold">
+            Ainda com dúvidas? A gente responde
+          </h3>
+          <h3 className="text-gray-800 text-xl font-medium">
+            Clique nas perguntas abaixo para ver as respostas mais buscadas
+          </h3>
         </div>
 
-        <h2 className="text-[40px] font-semibold mt-4">
-          <span>Perguntas</span>
-          <br />
-          <span>frequentes</span>
-        </h2>
+        <div>
+          <div className="px-6 py-4 rounded-full outline outline-offset-[-1px] outline-blue-600 inline-flex justify-center items-center gap-2">
+            <div className="text-blue-600 text-xl font-medium leading-normal">
+              Fale com o nosso time
+            </div>
+          </div>
+        </div>
       </div>
 
-      <Accordion
-        type="single"
-        collapsible
-        className="max-w-none xl:max-w-3xl w-full space-y-3"
-      >
-        {faqData.map((faq, index) => (
-          <AccordionItem
-            key={index}
-            value={`item-${index}`}
-            className="border border-zinc-200/70 rounded-2xl overflow-hidden"
-          >
-            <AccordionTrigger className="group w-full text-left py-4 px-8 text-lg font-medium bg-white cursor-pointer flex justify-between items-center">
-              <div>{faq.title}</div>
-              <div className="transition-transform duration-300 group-data-[state=open]:rotate-180">
-                <ChevronDown />
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="pt-2 pb-6 px-8 text-base">
-              {faq.content}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
+      <div className="flex flex-col-reverse xl:flex-row items-center xl:items-start xl:justify-between gap-18 xl:gap-8">
+        <div>
+          <Image
+            src="/images/home/faq/message.png"
+            alt="Chat de atendimento"
+            width={515}
+            height={374}
+          />
+        </div>
+
+        <Accordion
+          type="single"
+          collapsible
+          className="max-w-none xl:max-w-3xl w-full space-y-3"
+        >
+          {faqData.map((faq, index) => (
+            <AccordionItem
+              key={index}
+              value={`item-${index}`}
+              className="border border-zinc-200/70 rounded-2xl overflow-hidden"
+            >
+              <AccordionTrigger
+                className={clsx(
+                  "group w-full text-left py-4 px-8 text-lg font-medium cursor-pointer flex justify-between items-center",
+                  "bg-white"
+                )}
+              >
+                <div>{faq.title}</div>
+                <div className="transition-transform duration-300 group-data-[state=open]:rotate-45">
+                  <Plus />
+                </div>
+              </AccordionTrigger>
+              <AccordionContent
+                className={clsx(
+                  "px-8 text-base overflow-hidden",
+                  "data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+                  "bg-white"
+                )}
+              >
+                <div className="pt-2 pb-6">{faq.content}</div>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+
+      <div className="w-full px-6 py-12 bg-lime-100 rounded-2xl space-y-6">
+        <Image
+          src="/images/home/faq/verified.svg"
+          alt="Chat de atendimento"
+          width={28}
+          height={28}
+          className="mx-auto"
+        />
+
+        <div className="text-center space-y-4">
+          <h3 className="text-4xl font-medium text-slate-950">
+            Verificação oficial pela
+            <span className="text-blue-600">Meta</span>
+          </h3>
+
+          <h3 className="text-gray-800 text-xl font-medium">
+            Mais confiança para você e seus clientes com tecnologia 100% segura
+            e aprovada
+          </h3>
+        </div>
+      </div>
+
+      <div className="text-center">Voltar para o topo</div>
     </section>
   );
 };

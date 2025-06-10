@@ -60,7 +60,7 @@ export function WppEcomm() {
   }, []);
 
   return (
-    <section className="relative bg-[#f5fff8] py-25 space-y-20">
+    <section className="relative bg-[#f5fff8] py-20 px-10 xl:py-25 xl:px-20 space-y-20">
       <div className="space-y-4">
         <div className="self-stretch text-center justify-center">
           <span className="text-gray-800 text-3xl font-medium leading-10">
@@ -77,10 +77,10 @@ export function WppEcomm() {
         </div>
       </div>
 
-      <div className="px-20 flex justify-between gap-6">
+      <div className="flex justify-between gap-6">
         {/* Left side */}
         <div ref={containerRef} className="flex-1 space-y-8">
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             {steps.map((step, index) => (
               <motion.div
                 key={index}
@@ -131,7 +131,7 @@ export function WppEcomm() {
         </div>
 
         {/* Right side */}
-        <div className="flex-1 relative">
+        <div className="max-w-[592px] flex-1 relative">
           <Image
             src="/images/home/wpp-ecomm/woman.png"
             alt="Mulher usando celular"

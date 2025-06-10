@@ -64,6 +64,8 @@ export const Benefits = () => {
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: false,
+    autoplay: true,
+    autoplaySpeed: 4000,
     responsive: [
       {
         breakpoint: 1280,
@@ -118,18 +120,18 @@ export const Benefits = () => {
           className="flex gap-6 !ml-[-12px] !mr-[-12px]"
         >
           {benefits.map(({ title, description, Icon }, index) => (
-            <div key={index} className="h-full flex items-stretch">
-              <div className="w-[322px] h-[408px] py-8 px-6 rounded-2xl border border-solid border-blue-100 hover:bg-[#D4EEFF] flex flex-col gap-3 transition-colors duration-150 ease-in group">
+            <div key={index} className="!px-3 h-full flex items-stretch">
+              <div className="w-[322px] h-90 xl:h-[408px] py-8 px-6 rounded-2xl border border-solid border-blue-100 hover:bg-[#D4EEFF] flex flex-col gap-3 transition-colors duration-150 ease-in group">
                 <div className="w-14 h-14 rounded-full bg-blue-100 inline-flex justify-center items-center group-hover:bg-[#1B2733] transition-colors duration-150 ease-in">
                   <Icon
                     size={24}
                     className="text-[#1B2733] group-hover:text-[#D4EEFF] transition-colors duration-150 ease-in"
                   />
                 </div>
-                <div className="text-gray-800 text-3xl font-medium">
+                <div className="text-gray-800 text-2xl xl:text-3xl font-medium">
                   {title}
                 </div>
-                <div className="text-gray-800 text-xl font-normal">
+                <div className="text-gray-800 text-base xl:text-xl font-normal">
                   {description}
                 </div>
               </div>

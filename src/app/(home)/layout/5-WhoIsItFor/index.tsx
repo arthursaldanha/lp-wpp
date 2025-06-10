@@ -24,28 +24,28 @@ const cards = [
 
 export const WhoIsItFor: React.FC = () => {
   return (
-    <section className="mt-40 p-20 space-y-20 bg-[#F6FFF1]">
+    <section className="mt-40 py-20 px-10 xl:p-20 space-y-20 bg-[#F6FFF1]">
       <div className="space-y-6 text-center">
         <div className="text-gray-800 text-3xl font-medium">
           <h3>
-            Pronto para transformar o WhatsApp <br /> em sua melhor ferramenta
+            Pronto para transformar o WhatsApp <br className="hidden md:block" /> em sua melhor ferramenta
             de vendas?
           </h3>
         </div>
 
         <div className="text-gray-800 text-2xl font-medium">
           <h3>
-            Comece agora com nosso plano gratuito, sem precisar de <br /> cartão
+            Comece agora com nosso plano gratuito, sem precisar de <br className="hidden md:block" /> cartão
             e com suporte desde o primeiro clique
           </h3>
         </div>
       </div>
 
-      <div className="flex items-stretch gap-4">
+      <div className="max-w-[660px] xl:max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 xl:flex xl:justify-center xl:items-stretch xl:gap-4">
         {cards.map(({ title, description }, index) => (
           <div
             key={title}
-            className="flex-1 px-4 py-6 bg-white rounded-2xl inline-flex flex-col justify-start items-start gap-6"
+            className="max-w-[289px] xl:flex-1 px-4 py-6 bg-white rounded-2xl place-self-center inline-flex flex-col justify-start items-start gap-6"
           >
             <div className="w-14 h-14 relative inline-flex justify-center items-center bg-blue-600 rounded-full overflow-hidden">
               <span className="text-white text-3xl font-medium">

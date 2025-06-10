@@ -195,6 +195,7 @@ export const Hero = () => {
               alt="Homem utilizando o Whatsapp Farma"
               width={542}
               height={620}
+              priority
             />
           </motion.div>
 
